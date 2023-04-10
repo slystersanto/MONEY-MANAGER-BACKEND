@@ -3,15 +3,24 @@ const app = express();
 
 const mongodb = require("mongodb");
 const mongoclient = mongodb.MongoClient;
-const URL = process.env.DB    // Replace with your MongoDB connection string
+const URL ="mongodb+srv://santhosh:ZaZnCdMpZGggrMe1@cluster0.0wtd0tl.mongodb.net/test" // Replace with your MongoDB connection string
 const cors = require("cors");
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://localhost:3001",
-  })
-);
+
+app.use((req, res, next) => {
+   
+  res.setHeader('Access-Control-Allow-Origin', 'https://master--jade-buttercream-07d248.netlify.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
+// app.use(
+//   cors({
+//     origin: "http://localhost:3001",
+//   })
+// );
 
 // Get all Income transactions
 app.get("/transactions/income", async (req, res) => {
@@ -75,21 +84,6 @@ app.get("/transactions/income/yearly", async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
