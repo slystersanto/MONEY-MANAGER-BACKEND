@@ -3,7 +3,7 @@ const app = express();
 
 const mongodb = require("mongodb");
 const mongoclient = mongodb.MongoClient;
-const URL = "mongodb+srv://santhosh:ZaZnCdMpZGggrMe1@cluster0.0wtd0tl.mongodb.net/test"// Replace with your MongoDB connection string
+const URL = process.env.DB    // Replace with your MongoDB connection string
 const cors = require("cors");
 
 app.use(express.json());
