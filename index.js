@@ -8,19 +8,19 @@ const cors = require("cors");
 
 app.use(express.json());
 
-app.use((req, res, next) => {
+// app.use((req, res, next) => {
    
-  res.setHeader('Access-Control-Allow-Origin', 'https://master--jade-buttercream-07d248.netlify.app');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+//   res.setHeader('Access-Control-Allow-Origin', 'https://master--jade-buttercream-07d248.netlify.app');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   next();
+// });
 
-// app.use(
-//   cors({
-//     origin: "http://localhost:3001",
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://master--jade-buttercream-07d248.netlify.app",
+  })
+);
 
 // Get all Income transactions
 app.get("/transactions/income", async (req, res) => {
